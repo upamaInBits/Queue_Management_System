@@ -67,6 +67,6 @@ It allows clients to sign in digitally and enables staff to manage and track ser
 
 ## Use Case
 
-Originally designed for a community food pantry to improve efficiency and reduce manual tracking of client queues.
+Originally designed for a community food pantry to improve efficiency and reduce manual tracking of client queues. Works across browsers, tested primarily on Chrome.
 
 ---
