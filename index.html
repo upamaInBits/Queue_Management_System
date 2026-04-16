@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        color: #1f2937;
+      }
+
+      .container {
+        width: 94%;
+        max-width: 1500px;
+        margin: 0 auto;
+        padding: 28px;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 28px;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 52px;
+        font-weight: 800;
+        line-height: 1.05;
+      }
+
+      .header p {
+        margin-top: 12px;
+        color: #6b7280;
+        font-size: 24px;
+      }
+
+      .card {
+        background: #ffffff;
+        border-radius: 22px;
+        padding: 34px;
+        box-shadow: 0 10px 28px rgba(0, 0, 0, 0.07);
+      }
+
+      .card h2 {
+        margin-top: 0;
+        margin-bottom: 22px;
+        font-size: 38px;
+      }
+
+      .form-group {
+        margin-bottom: 18px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      input {
+        width: 100%;
+        padding: 18px 20px;
+        border: 1px solid #d1d5db;
+        border-radius: 16px;
+        font-size: 24px;
+        background: #fff;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #2563eb;
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 22px;
+      }
+
+      button {
+        border: none;
+        border-radius: 14px;
+        padding: 18px 28px;
+        font-size: 24px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .primary {
+        background: #2563eb;
+        color: white;
+      }
+
+      .primary:hover {
+        background: #1d4ed8;
+      }
+
+      .secondary {
+        background: #e5e7eb;
+        color: #111827;
+      }
+
+      .secondary:hover {
+        background: #d1d5db;
+      }
+
+      .danger {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+
+      .danger:hover {
+        background: #fecaca;
+      }
+
+      .outline {
+        background: white;
+        color: #111827;
+        border: 1px solid #d1d5db;
+      }
+
+      .outline:hover {
+        background: #f9fafb;
+      }
+
+      .message {
+        margin-top: 22px;
+        padding: 20px 24px;
+        border-radius: 16px;
+        background: #eff6ff;
+        color: #1d4ed8;
+        font-size: 26px;
+        font-weight: 700;
+        display: none;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      .client-view {
+        max-width: 900px;
+        margin: 48px auto;
+      }
+
+      .client-view .card {
+        padding: 40px;
+      }
+
+      .client-view .card h2 {
+        font-size: 42px;
+      }
+
+      .client-view button {
+        min-width: 180px;
+      }
+
+      .staff-view {
+        max-width: 1500px;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        margin-bottom: 26px;
+      }
+
+      .stat-box {
+        background: #f9fafb;
+        border-radius: 18px;
+        padding: 26px 20px;
+        text-align: center;
+      }
+
+      .stat-box .num {
+        font-size: 56px;
+        font-weight: 800;
+        line-height: 1;
+      }
+
+      .stat-box .label {
+        font-size: 22px;
+        color: #6b7280;
+        margin-top: 10px;
+      }
+
+      .queue-list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-top: 20px;
+      }
+
+      .queue-item {
+        border: 1px solid #e5e7eb;
+        border-radius: 18px;
+        padding: 22px;
+        background: #fff;
+      }
+
+      .queue-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .queue-name {
+        font-size: 28px;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+
+      .queue-meta {
+        font-size: 18px;
+        color: #6b7280;
+        line-height: 1.6;
+        margin-top: 10px;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .waiting {
+        background: #fef3c7;
+        color: #92400e;
+      }
+
+      .office {
+        background: #dbeafe;
+        color: #1d4ed8;
+      }
+
+      .ready {
+        background: #dcfce7;
+        color: #166534;
+      }
+
+      .new-badge {
+        background: #ede9fe;
+        color: #6d28d9;
+      }
+
+      .returning-badge {
+        background: #e0f2fe;
+        color: #0369a1;
+      }
+
+      .queue-actions {
+        margin-top: 16px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .small-badges {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .empty {
+        font-size: 24px;
+        color: #6b7280;
+        text-align: center;
+        padding: 34px;
+      }
+
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 999;
+        padding: 24px;
+      }
+
+      .modal {
+        width: 100%;
+        max-width: 650px;
+        background: white;
+        border-radius: 22px;
+        padding: 30px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+        animation: popIn 0.25s ease;
+      }
+
+      @keyframes popIn {
+        from {
+          transform: scale(0.95);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .modal h3 {
+        margin: 0 0 12px 0;
+        font-size: 34px;
+      }
+
+      .modal p {
+        margin: 0;
+        color: #4b5563;
+        line-height: 1.6;
+        font-size: 20px;
+      }
+
+      .modal .button-row {
+        margin-top: 24px;
+      }
+
+      @media (max-width: 1000px) {
+        .header h1 {
+          font-size: 40px;
+        }
+
+        .header p {
+          font-size: 20px;
+        }
+
+        .card h2 {
+          font-size: 30px;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        button {
+          font-size: 20px;
+          padding: 15px 20px;
+        }
+
+        input {
+          font-size: 20px;
+        }
+
+        label {
+          font-size: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <? var currentView = view || "client"; ?>
+
+    <? if (currentView === "client") { ?>
+      <div class="container client-view">
+        <div class="header">
+          <h1>Welcome!</h1>
+          <p>Please sign in below</p>
+        </div>
+
+        <div class="card">
+          <h2>Client Sign-In</h2>
+
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input id="firstName" type="text" placeholder="Enter first name">
+          </div>
+
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" type="text" placeholder="Enter last name">
+          </div>
+
+          <div class="button-row">
+            <button class="primary" onclick="signInClient()">Sign In</button>
+          </div>
+
+          <div id="message" class="message"></div>
+        </div>
+      </div>
+    <? } ?>
+
+    <? if (currentView === "staff") { ?>
+      <div class="container staff-view">
+        <div class="header">
+          <h1>Staff Dashboard</h1>
+          <p>Client check-in management</p>
+        </div>
+
+        <div class="card">
+          <h2>Staff Dashboard</h2>
+
+          <div class="stats">
+            <div class="stat-box">
+              <div class="num" id="waitingCount">0</div>
+              <div class="label">Waiting</div>
+            </div>
+            <div class="stat-box">
+              <div class="num" id="officeCount">0</div>
+              <div class="label">In Office</div>
+            </div>
+            <div class="stat-box">
+              <div class="num" id="readyCount">0</div>
+              <div class="label">Ready</div>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button class="primary" onclick="callNext()">Call Next</button>
+            <button class="secondary" onclick="loadQueue()">Refresh</button>
+            <button class="danger" onclick="resetQueue()">Reset Today</button>
+          </div>
+
+          <div id="queueList" class="queue-list"></div>
+        </div>
+      </div>
+    <? } ?>
+
+    <div id="confirmModal" class="modal-overlay">
+      <div class="modal">
+        <h3>Possible Match Found</h3>
+        <p id="modalText">We found a client with this name. Is this you?</p>
+        <div class="button-row">
+          <button class="primary" onclick="confirmExistingClient()">Yes, this is me</button>
+          <button class="outline" onclick="createNewDifferentPerson()">No, this is a different person</button>
+          <button class="secondary" onclick="closeModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      let pendingMatch = null;
+      let pendingFirstName = "";
+      let pendingLastName = "";
+      const CURRENT_VIEW = "<?= currentView ?>";
+
+      function showMessage(text) {
+        const msg = document.getElementById("message");
+        if (!msg) return;
+        msg.style.display = "block";
+        msg.textContent = text;
+
+        setTimeout(() => {
+          msg.style.display = "none";
+        }, 4500);
+      }
+
+      function showError(error) {
+        console.error(error);
+        const message = typeof error === "string"
+          ? error
+          : (error && error.message) ? error.message : "Something went wrong.";
+        alert("Error: " + message);
+      }
+
+      function getStatusBadge(status) {
+        if (status === "Waiting") return '<span class="badge waiting">Waiting</span>';
+        if (status === "In Office") return '<span class="badge office">In Office</span>';
+        if (status === "Ready") return '<span class="badge ready">Ready</span>';
+        return "";
+      }
+
+      function getClientTypeBadge(type) {
+        if (type === "New") return '<span class="badge new-badge">New</span>';
+        return '<span class="badge returning-badge">Returning</span>';
+      }
+
+      function openModal(text) {
+        document.getElementById("modalText").textContent = text;
+        document.getElementById("confirmModal").style.display = "flex";
+      }
+
+      function closeModal() {
+        document.getElementById("confirmModal").style.display = "none";
+        pendingMatch = null;
+      }
+
+      function clearForm() {
+        const first = document.getElementById("firstName");
+        const last = document.getElementById("lastName");
+        if (first) first.value = "";
+        if (last) last.value = "";
+      }
+
+      function loadQueue() {
+        if (CURRENT_VIEW !== "staff") return;
+
+        google.script.run
+          .withSuccessHandler(function(data) {
+            renderQueue(data || []);
+          })
+          .withFailureHandler(showError)
+          .getQueueData();
+      }
+
+      function renderQueue(data) {
+        const queueList = document.getElementById("queueList");
+        if (!queueList) return;
+
+        const waiting = data.filter(x => x.status === "Waiting").length;
+        const office = data.filter(x => x.status === "In Office").length;
+        const ready = data.filter(x => x.status === "Ready").length;
+
+        document.getElementById("waitingCount").textContent = waiting;
+        document.getElementById("officeCount").textContent = office;
+        document.getElementById("readyCount").textContent = ready;
+
+        if (data.length === 0) {
+          queueList.innerHTML = '<div class="empty">No clients in queue yet.</div>';
+          return;
+        }
+
+        queueList.innerHTML = "";
+
+        data.forEach(function(client) {
+          const div = document.createElement("div");
+          div.className = "queue-item";
+
+          let buttons = "";
+
+          if (client.status === "Waiting") {
+            buttons += `<button class="primary" onclick="updateStatus('${client.queueId}', 'In Office')">Call</button>`;
+          }
+
+          if (client.status === "In Office") {
+            buttons += `<button class="primary" onclick="updateStatus('${client.queueId}', 'Ready')">Mark Ready</button>`;
+          }
+
+          if (client.status === "Ready") {
+            buttons += `<button class="secondary" onclick="updateStatus('${client.queueId}', 'Done')">Complete</button>`;
+          }
+
+          buttons += `<button class="danger" onclick="removeQueueItem('${client.queueId}')">Remove</button>`;
+
+          div.innerHTML = `
+            <div class="queue-top">
+              <div>
+                <div class="queue-name">#${client.queueNumber} - ${client.firstName} ${client.lastName}</div>
+                <div class="small-badges">
+                  ${getClientTypeBadge(client.clientType)}
+                  ${getStatusBadge(client.status)}
+                </div>
+                <div class="queue-meta">
+                  Client ID: ${client.clientId}<br>
+                  Signed in at ${client.timeIn}
+                </div>
+              </div>
+            </div>
+            <div class="queue-actions">${buttons}</div>
+          `;
+
+          queueList.appendChild(div);
+        });
+      }
+
+      function signInClient() {
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+
+        if (!firstName || !lastName) {
+          showMessage("Please enter first and last name.");
+          return;
+        }
+
+        pendingFirstName = firstName;
+        pendingLastName = lastName;
+
+        google.script.run
+          .withSuccessHandler(function(response) {
+            if (response.requiresConfirmation) {
+              pendingMatch = response.matchedClient;
+              openModal(
+                `We found an existing client named ${response.firstName} ${response.lastName} with ID ${response.matchedClient.clientId}. Is this you?`
+              );
+              return;
+            }
+
+            if (response.result) {
+              if (response.result.alreadySignedIn) {
+                showMessage(
+                  `This client is already signed in today. Queue #${response.result.queueNumber} • Status: ${response.result.status}`
+                );
+                clearForm();
+                return;
+              }
+
+              showMessage(
+                `Signed in successfully. Queue #${response.result.queueNumber} • ${response.result.clientType} Client • ID: ${response.result.clientId}`
+              );
+              clearForm();
+            }
+          })
+          .withFailureHandler(showError)
+          .beginSignIn(firstName, lastName);
+      }
+
+      function confirmExistingClient() {
+        if (!pendingMatch) return;
+
+        google.script.run
+          .withSuccessHandler(function(response) {
+            closeModal();
+
+            if (response.alreadySignedIn) {
+              showMessage(
+                `This client is already signed in today. Queue #${response.queueNumber} • Status: ${response.status}`
+              );
+              clearForm();
+              return;
+            }
+
+            showMessage(
+              `Signed in successfully. Queue #${response.queueNumber} • Returning Client • ID: ${response.clientId}`
+            );
+            clearForm();
+          })
+          .withFailureHandler(showError)
+          .confirmExistingClientSignIn(pendingMatch.clientId);
+      }
+
+      function createNewDifferentPerson() {
+        google.script.run
+          .withSuccessHandler(function(response) {
+            closeModal();
+
+            if (response.alreadySignedIn) {
+              showMessage(
+                `This client is already signed in today. Queue #${response.queueNumber} • Status: ${response.status}`
+              );
+              clearForm();
+              return;
+            }
+
+            showMessage(
+              `Signed in successfully. Queue #${response.queueNumber} • New Client • ID: ${response.clientId}`
+            );
+            clearForm();
+          })
+          .withFailureHandler(showError)
+          .createDifferentPersonAndSignIn(pendingFirstName, pendingLastName);
+      }
+
+      function updateStatus(queueId, status) {
+        google.script.run
+          .withSuccessHandler(function() {
+            loadQueue();
+          })
+          .withFailureHandler(showError)
+          .updateQueueStatus(queueId, status);
+      }
+
+      function removeQueueItem(queueId) {
+        google.script.run
+          .withSuccessHandler(function() {
+            loadQueue();
+          })
+          .withFailureHandler(showError)
+          .removeQueueItem(queueId);
+      }
+
+      function callNext() {
+        google.script.run
+          .withSuccessHandler(function(response) {
+            if (response && response.success === false && response.message) {
+              alert(response.message);
+            }
+            loadQueue();
+          })
+          .withFailureHandler(showError)
+          .callNextClient();
+      }
+
+      function resetQueue() {
+        const confirmed = confirm("Are you sure you want to reset today's queue?");
+        if (!confirmed) return;
+
+        google.script.run
+          .withSuccessHandler(function() {
+            loadQueue();
+            alert("Today's queue was reset.");
+          })
+          .withFailureHandler(showError)
+          .resetTodayQueue();
+      }
+
+      window.onload = function() {
+        if (CURRENT_VIEW === "staff") {
+          loadQueue();
+          setInterval(loadQueue, 10000);
+        }
+      };
+    </script>
+  </body>
+</html>
