@@ -11,10 +11,10 @@ It allows clients to sign in digitally and enables staff to manage and track ser
 ## Live Demo
 
 * Client Interface:
-  https://script.google.com/macros/s/AKfycbyHWBussWgiKEvyLGPwxDGMU9NgIcw5M149WMlbX6hJEkDvYboxbeTRZLQGDVDCxVSW/exec?view=client
+  https://script.google.com/macros/s/AKfycbz2t7mnbPzlljNMv0Cc1ikGY3ZtOzxK0KasqZkZjcBFSan3OMgmsfB4I_cz-lpHssKw/exec?view=client
 
 * Staff Dashboard:
-  https://script.google.com/macros/s/AKfycbyHWBussWgiKEvyLGPwxDGMU9NgIcw5M149WMlbX6hJEkDvYboxbeTRZLQGDVDCxVSW/exec?view=staff
+  https://script.google.com/macros/s/AKfycbz2t7mnbPzlljNMv0Cc1ikGY3ZtOzxK0KasqZkZjcBFSan3OMgmsfB4I_cz-lpHssKw/exec?view=staff
 
 ---
 
