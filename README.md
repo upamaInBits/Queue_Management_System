@@ -16,6 +16,8 @@ It allows clients to sign in digitally and enables staff to manage and track ser
 * Staff Dashboard:
   https://script.google.com/macros/s/AKfycbz2t7mnbPzlljNMv0Cc1ikGY3ZtOzxK0KasqZkZjcBFSan3OMgmsfB4I_cz-lpHssKw/exec?view=staff
 
+Works across browsers, tested primarily on Chrome. If access issues appear in a regular browser session, opening the app in an incognito window or a browser signed into the correct Google account resolves the issue.
+
 ---
 
 ## Features
@@ -67,6 +69,6 @@ It allows clients to sign in digitally and enables staff to manage and track ser
 
 ## Use Case
 
-Originally designed for a community food pantry to improve efficiency and reduce manual tracking of client queues. Works across browsers, tested primarily on Chrome.
+Originally designed for a community food pantry to improve efficiency and reduce manual tracking of client queues. 
 
 ---
