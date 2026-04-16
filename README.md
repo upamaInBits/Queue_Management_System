@@ -27,6 +27,9 @@ Works across browsers, tested primarily on Chrome. If access issues appear in a 
 * Simple check-in form (First Name, Last Name)
 * Option to mark as New or Returning client
 * Duplicate name handling ("Is this you?" confirmation)
+<img width="1086" height="698" alt="image" src="https://github.com/user-attachments/assets/434496d4-98f0-4a05-b9ac-f6d68014d504" />
+
+
 
 ### Staff Dashboard
 
@@ -38,6 +41,9 @@ Works across browsers, tested primarily on Chrome. If access issues appear in a 
   * In Office
   * Ready to be Served
 * Differentiates new vs returning clients
+<img width="1086" height="698" alt="image" src="https://github.com/user-attachments/assets/21829c3d-06f9-412e-8391-1ee6eb4a0400" />
+<img width="1086" height="698" alt="image" src="https://github.com/user-attachments/assets/f3c750ba-3d46-4cda-8ef7-1dcd82e90f22" />
+
 
 ---
 
