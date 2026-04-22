@@ -11,10 +11,10 @@ It allows clients to sign in digitally and enables staff to manage and track ser
 ## Live Demo
 
 * Client Interface:
-  https://script.google.com/macros/s/AKfycbz2t7mnbPzlljNMv0Cc1ikGY3ZtOzxK0KasqZkZjcBFSan3OMgmsfB4I_cz-lpHssKw/exec?view=client
+  https://script.google.com/macros/s/AKfycbyb78lZVRkQ8HAo4AsfU5YhIbU9dD4SJ9KZrteJjePL72yE5IE5htUgvXggoGSp8yx5/exec?view=client
 
 * Staff Dashboard:
-  https://script.google.com/macros/s/AKfycbz2t7mnbPzlljNMv0Cc1ikGY3ZtOzxK0KasqZkZjcBFSan3OMgmsfB4I_cz-lpHssKw/exec?view=staff
+ https://script.google.com/macros/s/AKfycbyb78lZVRkQ8HAo4AsfU5YhIbU9dD4SJ9KZrteJjePL72yE5IE5htUgvXggoGSp8yx5/exec?view=staff
 
 Works across browsers, tested primarily on Chrome. If access issues appear in a regular browser session, opening the app in an incognito window or a browser signed into the correct Google account resolves the issue.
 
